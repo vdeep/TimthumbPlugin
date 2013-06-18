@@ -23,7 +23,9 @@ You can also download the zip file and extract the code manually into the `Timth
 
 After copying the code, you just need to enable the plugin by adding the following code at the end of the `bootstrap.php` file in `app/Config` folder:
 
-`CakePlugin::load('Timthumb', array('routes' => true, 'bootstrap' => true));`
+```php
+CakePlugin::load('Timthumb', array('routes' => true, 'bootstrap' => true));
+```
 
 This will load the plugin. Now, to use this in the views, you'll need to add the helper. Use this in the `AppController.php` file:
 
@@ -44,6 +46,14 @@ echo $this->Timthumb->image('/img/picture.png', array('width' => 200, 'height' =
 This will show the `picture.png` image residing in the `img` folder under `webroot` folder, after cropping/resizing it to 200 x 100 pixels.
 
 The output will be saved in the `tmp/timthumb` directory as cache for future use.
+
+To just get the url to the image file (to use with anchors or somewhere else), you can use the `Timthumb->imageUrl` method as follows:
+
+```php
+$this->Timthumb->imageUrl('/img/picture.png', array('width' => 200, 'height' => 100));
+```
+
+This will return the url to the timthumb image, which you can use inside an anchor to create a link to the image.
 
 ## Configuration
 

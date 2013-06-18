@@ -48,7 +48,39 @@ class TimthumbHelper extends AppHelper {
         'canvas_transparency' => 1
     );
 
+/**
+ * a wrapper to expose private function getTimthumbImageUrl
+ *
+ * @param $path - string - path to the image file
+ * @param $timthumbOptions - array - options for modifying the image
+ * @return string - url for the image with added query string parameters
+ */
+    public function imageUrl($path, $timthumbOptions = array()) {
+        return $this->getTimthumbImageUrl($path, $timthumbOptions);
+    }
+
+/**
+ * returns the image with all the modifications
+ *
+ * @param $path - string - path to the image file
+ * @param $timthumbOptions - array - timthumb options
+ * @param $options - array - Html image helper options (for adding parameters to images)
+ * @return string - image tag with timthumb image src
+ */
     public function image($path, $timthumbOptions = array(), $options = array()) {
+        $completePath = $this->getTimthumbImageUrl($path, $timthumbOptions);
+        return $this->Html->image($completePath, array_merge($options, array('escape' => false)));
+    }
+
+/**
+ * returns the url to the image
+ *
+ * @param $path - string - path to the image file
+ * @param $timthumbOptions - array - options for modifying the image
+ * @return string - url for the image with added query string parameters
+ */
+
+    private function getTimthumbImageUrl($path, $timthumbOptions = array()) {
         $action = '/timthumb';
         $basePath = Configure::read('TimthumbBasePath');
 
@@ -60,11 +92,16 @@ class TimthumbHelper extends AppHelper {
             $timthumbOptions
         );
 
-        $completePath = $action . '?' . $this->getOptionQueryString($timthumbOptions);
-
-        return $this->Html->image($completePath, array_merge($options, array('escape' => false)));
+        return $action . '?' . $this->getOptionQueryString($timthumbOptions);
     }
 
+/**
+ * generates the query string according to the passed 
+ * parameters after translating them to library options
+ *
+ * @param $options - array - options to convert to query string params
+ * @return string - generated query string
+ */
     private function getOptionQueryString($options) {
         $ret = "";
         foreach ( $options as $k => $v ) {
