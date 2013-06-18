@@ -23,7 +23,7 @@ class TimthumbHelper extends AppHelper {
  *
  * @var array
  */
-    public $_translations = array(
+    private $_translations = array(
         'src' => 'src',
         'width' => 'w',                     // the width to resize to
         'height' => 'h',                    // the height to resize to
@@ -41,7 +41,7 @@ class TimthumbHelper extends AppHelper {
  *
  * @var array
  */
-    public $_defaults = array(
+    private $_defaults = array(
         'quality' => 80,
         'alignment' => 'c',                 // c = center
         'zoom_crop' => 1,                   // 1 = Crop and resize to best fit the dimensions
