@@ -43,8 +43,6 @@ class TimthumbHelper extends AppHelper {
  */
     public $_defaults = array(
         'quality' => 80,
-        'width' => 100,
-        'height' => 100,
         'alignment' => 'c',                 // c = center
         'zoom_crop' => 1,                   // 1 = Crop and resize to best fit the dimensions
         'canvas_transparency' => 1
