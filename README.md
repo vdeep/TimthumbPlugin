@@ -4,11 +4,15 @@ CakePHP TimthumbPlugin
 This is a simple plugin which uses the Timthumb library to resize the images when requested.
 
 ## Requirements
+
 CakePHP Version - 2.2.x or 2.3.x
+
 `app/tmp/timthumb` folder must be writable for cache storage (can be configured to use a different folder)
+
 PHP GD library must also be installed on the server to use this plugin.
 
 ## Usage
+
 To use this plugin, navigate to the `app/Plugin` directory in your git software, and use this command:
 
 `git clone https://github.com/vishal-logiciel/TimthumbPlugin.git Timthumb`
