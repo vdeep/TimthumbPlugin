@@ -86,7 +86,7 @@ class TimthumbHelper extends AppHelper {
 
         $timthumbOptions = array_merge(
             array(
-                'src' => $this->request->base . $basePath . $path
+                'src' => $this->Html->assetUrl($path, array('fullBase' => true, 'pathPrefix' => IMAGES_URL))
             ),
             $this->_defaults, 
             $timthumbOptions
