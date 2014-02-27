@@ -67,7 +67,10 @@ class TimthumbHelper extends AppHelper {
  * @param $options - array - Html image helper options (for adding parameters to images)
  * @return string - image tag with timthumb image src
  */
-    public function image($path, $timthumbOptions = array(), $options = array()) {
+     public function image($path, $timthumbOptions = array(), $options = array()) {
+        if(empty($path) || !file_exists(WWW_ROOT.$path)) {
+            $path = Configure::read('TimthumbDefaultImg');
+        }
         $completePath = $this->getTimthumbImageUrl($path, $timthumbOptions);
         return $this->Html->image($completePath, array_merge($options, array('escape' => false)));
     }
