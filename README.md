@@ -69,6 +69,8 @@ To change the default base path, change the `TimthumbBasePath` configuration set
 
 To change the cache directory, change the `TimthumbCacheDir` configuration setting in the `app/Plugin/Timthumb/Config/bootstrap.php` file. Please note that this must be the physical address of the folder, not the URL.
 
+To use a placeholder image when the passed image is not found, you can uncomment the `TimthumbDefaultImg` configuration in the `app/Plugin/Timthumb/Config/bootstrap.php` file and set it to the path of your placeholder image.
+
 ## Available options for the helper
 
 Following are the options that can be passed as an array in the Timthumb helper:

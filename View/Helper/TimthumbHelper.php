@@ -68,9 +68,6 @@ class TimthumbHelper extends AppHelper {
  * @return string - image tag with timthumb image src
  */
      public function image($path, $timthumbOptions = array(), $options = array()) {
-        if(empty($path) || !file_exists(WWW_ROOT.$path)) {
-            $path = Configure::read('TimthumbDefaultImg');
-        }
         $completePath = $this->getTimthumbImageUrl($path, $timthumbOptions);
         return $this->Html->image($completePath, array_merge($options, array('escape' => false)));
     }
@@ -86,6 +83,10 @@ class TimthumbHelper extends AppHelper {
     private function getTimthumbImageUrl($path, $timthumbOptions = array()) {
         $action = '/timthumb';
         $basePath = Configure::read('TimthumbBasePath');
+
+        if(empty($path) || !file_exists($basePath . $path) && Configure::check('TimthumbDefaultImg')) {
+            $path = Configure::read('TimthumbDefaultImg');
+        }
 
         $timthumbOptions = array_merge(
             array(
