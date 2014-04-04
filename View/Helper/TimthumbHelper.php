@@ -88,15 +88,31 @@ class TimthumbHelper extends AppHelper {
             $path = Configure::read('TimthumbDefaultImg');
         }
 
+        $webBase = $this->request->base;
+
+        if (Configure::read('App.baseUrl') && strlen($webBase) > 0) {
+            $lastPart = strrpos($webBase, '/');
+            $webBase = substr($webBase, 0, $lastPart);
+        }
+
         $timthumbOptions = array_merge(
             array(
-                'src' => $this->request->base . $basePath . $path
+                'src' => $webBase . $basePath . $path
             ),
             $this->_defaults, 
             $timthumbOptions
         );
 
-        return $action . '?' . $this->getOptionQueryString($timthumbOptions);
+        $url = $this->Html->url(
+            array(
+                'controller' => 'timthumb',
+                'action' => 'image',
+                '?' => $this->getOptionQueryString($timthumbOptions)
+            ),
+            true
+        );
+
+        return $url;
     }
 
 /**
