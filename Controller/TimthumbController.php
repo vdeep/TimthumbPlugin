@@ -6,7 +6,7 @@ class TimthumbController extends TimthumbAppController {
     public function beforeFilter() {
         parent::beforeFilter();
         
-        if (in_array('Auth', $this->components)) {
+        if (array_key_exists('Auth', $this->components)) {
             $this->Auth->allow('image');
         }
     }
