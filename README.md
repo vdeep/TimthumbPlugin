@@ -15,7 +15,7 @@ PHP GD library must also be installed on the server to use this plugin.
 
 To use this plugin, navigate to the `app/Plugin` directory in your git software, and use this command:
 
-`git clone https://github.com/vishal-logiciel/TimthumbPlugin.git Timthumb`
+`git clone https://github.com/vdeep/TimthumbPlugin.git Timthumb`
 
 This command will create a folder named `Timthumb` in the plugin directory and will clone all the plugin code into it.
 
